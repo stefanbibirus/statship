@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#000033"/>
+  
+  <!-- Grid Background -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 255, 255, 0.2)" stroke-width="1"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  
+  <!-- CRT Scanlines -->
+  <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="2" fill="rgba(0, 0, 0, 0)"/>
+    <rect y="2" width="4" height="2" fill="rgba(0, 0, 0, 0.1)"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#scanlines)"/>
+  
+  <!-- Header Bar -->
+  <rect x="0" y="0" width="800" height="60" fill="rgba(0, 0, 50, 0.8)"/>
+  <text x="400" y="38" font-family="Arial" font-size="24" fill="white" text-anchor="middle" filter="url(#glow)">RETRO SYNTH RELATIONSHIP</text>
+  
+  <!-- User Controls -->
+  <text x="680" y="30" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Bine ai venit, Alex</text>
+  <rect x="720" y="15" width="60" height="30" fill="transparent" stroke="#00ff00" stroke-width="2"/>
+  <text x="750" y="34" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Logout</text>
+  
+  <!-- Helix Animation Area -->
+  <rect x="100" y="80" width="600" height="320" fill="rgba(0, 0, 30, 0.5)" stroke="#00ffff" stroke-width="1"/>
+  
+  <!-- Double Helix Animation (static representation) -->
+  <path d="M 400 90 
+           C 450 120, 350 150, 400 180 
+           C 450 210, 350 240, 400 270 
+           C 450 300, 350 330, 400 360" 
+        fill="none" stroke="#ff00ff" stroke-width="4" stroke-linecap="round">
+    <animate attributeName="d" 
+             dur="10s" 
+             repeatCount="indefinite" 
+             values="M 400 90 C 450 120, 350 150, 400 180 C 450 210, 350 240, 400 270 C 450 300, 350 330, 400 360;
+                     M 400 90 C 350 120, 450 150, 400 180 C 350 210, 450 240, 400 270 C 350 300, 450 330, 400 360;
+                     M 400 90 C 450 120, 350 150, 400 180 C 450 210, 350 240, 400 270 C 450 300, 350 330, 400 360"/>
+  </path>
+  <path d="M 400 90 
+           C 350 120, 450 150, 400 180 
+           C 350 210, 450 240, 400 270 
+           C 350 300, 450 330, 400 360" 
+        fill="none" stroke="#00ffff" stroke-width="4" stroke-linecap="round">
+    <animate attributeName="d" 
+             dur="10s" 
+             repeatCount="indefinite" 
+             values="M 400 90 C 350 120, 450 150, 400 180 C 350 210, 450 240, 400 270 C 350 300, 450 330, 400 360;
+                     M 400 90 C 450 120, 350 150, 400 180 C 450 210, 350 240, 400 270 C 450 300, 350 330, 400 360;
+                     M 400 90 C 350 120, 450 150, 400 180 C 350 210, 450 240, 400 270 C 350 300, 450 330, 400 360"/>
+  </path>
+  
+  <!-- Controls -->
+  <rect x="150" y="420" width="500" height="120" fill="rgba(0, 0, 50, 0.7)" stroke="#00ffff" stroke-width="1"/>
+  
+  <!-- Relationship Info -->
+  <text x="400" y="450" font-family="Arial" font-size="20" fill="white" text-anchor="middle">Conectat cu Maria</text>
+  <text x="400" y="480" font-family="Arial" font-size="16" fill="white" text-anchor="middle">23 zile împreună</text>
+  
+  <!-- User Controls -->
+  <text x="220" y="440" font-family="Arial" font-size="16" fill="white">Tu</text>
+  <rect x="180" y="450" width="80" height="30" fill="transparent" stroke="#ff00ff" stroke-width="2"/>
+  <text x="220" y="470" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Apropie</text>
+  
+  <rect x="180" y="490" width="80" height="30" fill="transparent" stroke="#ff00ff" stroke-width="2"/>
+  <text x="220" y="510" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Îndepărtează</text>
+  
+  <!-- Partner Info -->
+  <text x="580" y="440" font-family="Arial" font-size="16" fill="white">Maria</text>
+  <rect x="540" y="470" width="80" height="30" fill="rgba(0, 255, 255, 0.2)" stroke="#00ffff" stroke-width="2"/>
+  <text x="580" y="490" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Aproape</text>
+  
+  <!-- Settings Button -->
+  <rect x="350" y="500" width="100" height="30" fill="transparent" stroke="#00ffff" stroke-width="2"/>
+  <text x="400" y="520" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Setări Relație</text>
+  
+  <!-- CRT Glow Effect -->
+  <radialGradient id="crtGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="rgba(0, 255, 255, 0.15)"/>
+    <stop offset="100%" stop-color="rgba(0, 0, 0, 0)"/>
+  </radialGradient>
+  <rect width="800" height="600" fill="url(#crtGlow)"/>
+  
+  <!-- Filter for Glow Effects -->
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+  </filter>
+  
+  <!-- Footer -->
+  <text x="400" y="580" font-family="Arial" font-size="12" fill="white" text-anchor="middle">© 2025 RETRO SYNTH RELATIONSHIP</text>
+</svg>

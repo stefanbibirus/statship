@@ -1,0 +1,253 @@
+/* Stiluri pentru animații și vizualizări */
+
+.helix-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.helix-canvas {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 30, 0.5);
+  border: 1px solid var(--neon-blue);
+  box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.helix-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 50, 0.7);
+  border-top: 1px solid var(--neon-blue);
+}
+
+.user-info, .partner-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.distance-control {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.distance-indicator {
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.status.close {
+  background-color: rgba(0, 255, 0, 0.2);
+  color: #00ff00;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+.status.neutral {
+  background-color: rgba(255, 255, 0, 0.2);
+  color: #ffff00;
+  border: 1px solid #ffff00;
+  box-shadow: 0 0 5px #ffff00;
+}
+
+.status.distant {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #ff00ff;
+  border: 1px solid #ff00ff;
+  box-shadow: 0 0 5px #ff00ff;
+}
+
+.helix-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Animație de pulsare pentru elementele neon */
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px var(--neon-blue));
+  }
+  100% {
+    filter: drop-shadow(0 0 5px var(--neon-blue));
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Animație de rotire pentru încărcare */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 255, 255, 0.3);
+  border-top: 4px solid var(--neon-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+/* Animație pentru ecranul de încărcare */
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Animație pentru elemente care apar */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Stiluri pentru layout-ul paginii dashbord */
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+
+.no-relationship-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.invite-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.invite-code-display {
+  background-color: rgba(0, 0, 50, 0.7);
+  border: 1px solid var(--neon-blue);
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.code-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.invite-code {
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: var(--neon-blue);
+  text-shadow: 0 0 5px var(--neon-blue);
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.separator::before {
+  margin-right: 10px;
+}
+
+.separator::after {
+  margin-left: 10px;
+}
+
+.relationship-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.days-counter {
+  background-color: rgba(0, 0, 50, 0.7);
+  border: 1px solid var(--neon-yellow);
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--neon-yellow);
+  margin: 10px 0 20px 0;
+}
+
+/* Animație pentru confirmarea de ștergere relație */
+.confirm-delete {
+  animation: fadeIn 0.3s ease;
+  background-color: rgba(50, 0, 0, 0.7);
+  border: 1px solid var(--neon-pink);
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--neon-pink);
+  margin: 10px 0;
+  text-align: center;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.warning {
+  color: var(--neon-pink);
+}

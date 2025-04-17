@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#000033"/>
+  
+  <!-- Grid Background -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 255, 255, 0.2)" stroke-width="1"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#grid)"/>
+  
+  <!-- CRT Scanlines -->
+  <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="2" fill="rgba(0, 0, 0, 0)"/>
+    <rect y="2" width="4" height="2" fill="rgba(0, 0, 0, 0.1)"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#scanlines)"/>
+  
+  <!-- Login Card -->
+  <rect x="250" y="100" width="300" height="400" fill="rgba(0, 0, 50, 0.7)" stroke="#00ffff" stroke-width="2"/>
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="5" result="blur"/>
+    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+  </filter>
+  <rect x="250" y="100" width="300" height="400" fill="none" stroke="#00ffff" stroke-width="2" filter="url(#glow)"/>
+  
+  <!-- Title -->
+  <text x="400" y="150" font-family="Arial" font-size="28" fill="white" text-anchor="middle" filter="url(#glow)">LOGIN</text>
+  
+  <!-- Email Input -->
+  <rect x="280" y="190" width="240" height="40" fill="rgba(0, 0, 0, 0.5)" stroke="#00ffff" stroke-width="2"/>
+  <text x="300" y="215" font-family="Arial" font-size="14" fill="#888888">E-mail</text>
+  
+  <!-- Password Input -->
+  <rect x="280" y="250" width="240" height="40" fill="rgba(0, 0, 0, 0.5)" stroke="#00ffff" stroke-width="2"/>
+  <text x="300" y="275" font-family="Arial" font-size="14" fill="#888888">Parolă</text>
+  
+  <!-- Login Button -->
+  <rect x="320" y="320" width="160" height="40" fill="transparent" stroke="#00ffff" stroke-width="2" filter="url(#glow)"/>
+  <text x="400" y="345" font-family="Arial" font-size="16" fill="white" text-anchor="middle">AUTENTIFICARE</text>
+  
+  <!-- Register Link -->
+  <text x="400" y="400" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Nu ai cont?</text>
+  <text x="400" y="420" font-family="Arial" font-size="14" fill="#00ffff" text-anchor="middle" filter="url(#glow)">Înregistrează-te</text>
+  
+  <!-- CRT Glow -->
+  <radialGradient id="crtGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+    <stop offset="0%" stop-color="rgba(0, 255, 255, 0.2)"/>
+    <stop offset="100%" stop-color="rgba(0, 0, 0, 0)"/>
+  </radialGradient>
+  <rect width="800" height="600" fill="url(#crtGlow)"/>
+</svg>
