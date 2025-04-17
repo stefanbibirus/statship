@@ -97,20 +97,6 @@ relationship-helix-backend/
    ```
 5. Accesează aplicația în browser la `http://localhost:3000`
 
-## Deploy
-
-### Backend (Railway sau Render)
-1. Creează un cont pe Railway sau Render
-2. Conectează repository-ul GitHub
-3. Configurează variabilele de mediu (vezi `.env.example`)
-4. Adaugă un serviciu PostgreSQL
-5. Implementează aplicația
-
-### Frontend (GitHub Pages)
-1. Actualizează `package.json` pentru GitHub Pages
-2. Configurează variabila `REACT_APP_API_URL` pentru URL-ul backend-ului
-3. Rulează `npm run deploy`
-
 ## Utilizare
 
 1. Creează un cont nou sau autentifică-te
