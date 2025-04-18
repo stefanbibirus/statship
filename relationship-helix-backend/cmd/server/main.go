@@ -37,9 +37,9 @@ func main() {
 	defer database.Close()
 
 	// Rulează migrările
-	//if err := db.RunMigrations(database); err != nil {
-	//	log.Fatalf("Eroare la rularea migrărilor: %v", err)
-	//}
+	if err := db.RunMigrations(database); err != nil {
+		log.Fatalf("Eroare la rularea migrărilor: %v", err)
+	}
 
 	// Creează aplicația Fiber
 	app := fiber.New(fiber.Config{
