@@ -118,4 +118,4 @@ Acest proiect este disponibil sub licența MIT. Consultă fișierul `LICENSE` pe
 
 ## Autori
 
-Dezvoltat ca parte a unui proiect demonstrativ pentru vizualizarea stării relațiilor interpersonale într-un mod creativ și estetic.
+Stefan Bibirus
