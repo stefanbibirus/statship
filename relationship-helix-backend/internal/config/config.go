@@ -39,7 +39,7 @@ func LoadConfig() *Config {
 	config.AllowOrigins = getEnv("ALLOW_ORIGINS", "*")
 
 	// Database
-	config.DatabaseURL = getEnv("DATABASE_URL", "postgres://postgres:postgres@localhost:5432/relationship_helix?sslmode=disable")
+	config.DatabaseURL = getEnv("DATABASE_URL", "postgresql://postgres:DVnjYwxqjOONvgVzFRGgntitqTuyXryI@centerbeam.proxy.rlwy.net:15677/railway")
 
 	// JWT
 	config.JWTSecret = getEnv("JWT_SECRET", "your-super-secret-jwt-key-change-this-in-production")
