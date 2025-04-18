@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useRelationship } from '../../context/RelationshipContext';
 import '../../styles/animations.css';
 
@@ -16,12 +16,14 @@ const HelixAnimation = () => {
 
   // Configurare pentru animație
   const config = {
-    radius: 100,
-    speed: 0.02,
-    lineWidth: 5,
+    radius: 30,           // Raza helixului
+    verticalSpacing: 20,  // Spațiul vertical între spirale
+    speed: 0.5,           // Viteza de rotație
+    lineWidth: 4,         // Grosimea liniei
     userColor: '#ff00ff', // Neon roz
     partnerColor: '#00ffff', // Neon cyan
-    maxDistance: 100, // Distanța maximă de îndepărtare
+    maxDistance: 40,      // Distanța maximă de îndepărtare
+    cycles: 6             // Numărul de cicluri complete
   };
 
   // Funcție pentru redimensionarea canvas-ului
@@ -42,30 +44,37 @@ const HelixAnimation = () => {
   }, []);
 
   // Funcția de desenare a helixului
-  const drawHelix = (ctx, timestamp) => {
+  const drawHelix = useCallback((ctx, timestamp) => {
     const { width, height } = dimensions;
     ctx.clearRect(0, 0, width, height);
     
     const centerX = width / 2;
     const centerY = height / 2;
-    const time = timestamp * config.speed;
+    const time = timestamp * 0.001 * config.speed;
     
-    // Calculăm distanța utilizatorului actual
+    // Calculăm distanța utilizatorului actual - convertim din procente (0-100) în pixeli
     const userDistance = (config.maxDistance * userCurvePosition) / 100;
     
     // Calculăm distanța partenerului
     const partnerDistance = (config.maxDistance * partnerCurvePosition) / 100;
-
-    // Desenăm curba utilizatorului curent
+    
+    // Calculăm înălțimea totală a helixului
+    const helixHeight = config.cycles * config.verticalSpacing;
+    const startY = centerY - helixHeight / 2;
+    
+    // Desenăm curba utilizatorului curent (curba 1)
     ctx.beginPath();
     ctx.strokeStyle = config.userColor;
     ctx.lineWidth = config.lineWidth;
-    ctx.shadowBlur = 15;
+    ctx.shadowBlur = 10;
     ctx.shadowColor = config.userColor;
-
-    for (let i = 0; i < Math.PI * 10; i += 0.1) {
-      const x = centerX + Math.cos(i + time) * config.radius;
-      const y = centerY + Math.sin(i * 2 + time) * config.radius - userDistance;
+    
+    for (let i = 0; i <= config.cycles * 10; i += 0.1) {
+      const progress = i / (config.cycles * 10);
+      const y = startY + progress * helixHeight;
+      
+      // Formula pentru helix vertical cu distanțare
+      const x = centerX + Math.sin(i + time) * (config.radius - userDistance);
       
       if (i === 0) {
         ctx.moveTo(x, y);
@@ -74,15 +83,18 @@ const HelixAnimation = () => {
       }
     }
     ctx.stroke();
-
-    // Desenăm curba partenerului
+    
+    // Desenăm curba partenerului (curba 2)
     ctx.beginPath();
     ctx.strokeStyle = config.partnerColor;
     ctx.shadowColor = config.partnerColor;
-
-    for (let i = 0; i < Math.PI * 10; i += 0.1) {
-      const x = centerX + Math.cos(i + time + Math.PI) * config.radius;
-      const y = centerY + Math.sin(i * 2 + time + Math.PI) * config.radius - partnerDistance;
+    
+    for (let i = 0; i <= config.cycles * 10; i += 0.1) {
+      const progress = i / (config.cycles * 10);
+      const y = startY + progress * helixHeight;
+      
+      // Formula pentru helix vertical cu distanțare, defazat cu 180 grade (PI radiani)
+      const x = centerX + Math.sin(i + time + Math.PI) * (config.radius - partnerDistance);
       
       if (i === 0) {
         ctx.moveTo(x, y);
@@ -96,7 +108,7 @@ const HelixAnimation = () => {
     drawScanlines(ctx, width, height);
     
     animationRef.current = requestAnimationFrame((timestamp) => drawHelix(ctx, timestamp));
-  };
+  }, [dimensions, userCurvePosition, partnerCurvePosition]);
 
   // Funcție pentru desenarea scanline-urilor (efect CRT)
   const drawScanlines = (ctx, width, height) => {
@@ -125,7 +137,7 @@ const HelixAnimation = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [dimensions, userCurvePosition, partnerCurvePosition, drawHelix]);
+  }, [dimensions, drawHelix]);
 
   // Dacă nu există o relație, afișăm un mesaj
   if (!relationship || !relationship.id) {
