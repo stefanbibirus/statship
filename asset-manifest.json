@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/statship/static/css/main.f0619971.css",
+    "main.js": "/statship/static/js/main.dea93fa9.js",
+    "index.html": "/statship/index.html",
+    "main.f0619971.css.map": "/statship/static/css/main.f0619971.css.map",
+    "main.dea93fa9.js.map": "/statship/static/js/main.dea93fa9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f0619971.css",
+    "static/js/main.dea93fa9.js"
+  ]
+}
