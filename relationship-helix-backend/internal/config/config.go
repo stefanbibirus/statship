@@ -39,10 +39,11 @@ func LoadConfig() *Config {
 	config.AllowOrigins = getEnv("ALLOW_ORIGINS", "*")
 
 	// Database
-	config.DatabaseURL = getEnv("DATABASE_URL", "postgresql://postgres:DVnjYwxqjOONvgVzFRGgntitqTuyXryI@postgres.railway.internal:5432/railway")
+
+	config.DatabaseURL = getEnv("DATABASE_URL", "postgresql://postgres:DVnjYwxqjOONvgVzFRGgntitqTuyXryI@centerbeam.proxy.rlwy.net:15677/railway")
 
 	// JWT
-	config.JWTSecret = getEnv("JWT_SECRET", "your-super-secret-jwt-key-change-this-in-production")
+	config.JWTSecret = getEnv("JWT_SECRET", "un_secret_foarte_lung_si_complex")
 	jwtExpiration, err := strconv.Atoi(getEnv("JWT_EXPIRATION_HOURS", "24"))
 	if err != nil {
 		jwtExpiration = 24
