@@ -10,8 +10,8 @@ import (
 // Config reprezintă configurația aplicației
 type Config struct {
 	// Server
-	ServerPort  int
-	Environment string
+	ServerPort   int
+	Environment  string
 	AllowOrigins string
 
 	// Database
@@ -39,7 +39,7 @@ func LoadConfig() *Config {
 	config.AllowOrigins = getEnv("ALLOW_ORIGINS", "*")
 
 	// Database
-	config.DatabaseURL = getEnv("DATABASE_URL", "postgres://postgres:postgres@localhost:5432/relationship_helix?sslmode=disable")
+	config.DatabaseURL = getEnv("DATABASE_URL", "postgresql://postgres:DVnjYwxqjOONvgVzFRGgntitqTuyXryI@postgres.railway.internal:5432/railway")
 
 	// JWT
 	config.JWTSecret = getEnv("JWT_SECRET", "your-super-secret-jwt-key-change-this-in-production")
