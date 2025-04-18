@@ -1,0 +1,9 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd relationship-helix-backend && go build -o main ./cmd/server"
+
+[deploy]
+startCommand = "cd relationship-helix-backend && ./main"
+healthcheckPath = "/"
+healthcheckTimeout = 100
+restartPolicyType = "on-failure"
