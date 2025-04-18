@@ -40,10 +40,10 @@ func LoadConfig() *Config {
 
 	// Database
 
-	config.DatabaseURL = getEnv("DATABASE_URL", "postgresql://postgres:DVnjYwxqjOONvgVzFRGgntitqTuyXryI@centerbeam.proxy.rlwy.net:15677/railway")
+	config.DatabaseURL = getEnv("DATABASE_URL", "////////////////////////////////")
 
 	// JWT
-	config.JWTSecret = getEnv("JWT_SECRET", "un_secret_foarte_lung_si_complex")
+	config.JWTSecret = getEnv("JWT_SECRET", "/////////////////////")
 	jwtExpiration, err := strconv.Atoi(getEnv("JWT_EXPIRATION_HOURS", "24"))
 	if err != nil {
 		jwtExpiration = 24
