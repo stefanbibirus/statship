@@ -12,15 +12,16 @@ import '../../styles/retro.css';
  * Pagina pentru utilizarea unui cod de invitație pentru a stabili o relație
  */
 const InviteCode = () => {
-  const [inviteCode, setInviteCode] = useState('');
+  const [inviteCodeValue, setInviteCodeValue] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { useInviteCode } = useRelationship();
+  // Extragem funcția din context - acum se numește joinWithInviteCode pentru a evita confuzia
+  const { joinWithInviteCode } = useRelationship();
   const navigate = useNavigate();
   
   // Actualizează codul de invitație
   const handleChange = (e) => {
-    setInviteCode(e.target.value.toUpperCase());
+    setInviteCodeValue(e.target.value.toUpperCase());
   };
   
   // Verifică și utilizează codul de invitație
@@ -28,14 +29,15 @@ const InviteCode = () => {
     e.preventDefault();
     setError('');
     
-    if (!inviteCode.trim()) {
+    if (!inviteCodeValue.trim()) {
       return setError('Te rugăm să introduci codul de invitație');
     }
     
     setLoading(true);
     
     try {
-      await useInviteCode(inviteCode);
+      // Folosim funcția redenumită
+      await joinWithInviteCode(inviteCodeValue);
       navigate('/dashboard');
     } catch (err) {
       console.error('Eroare la utilizarea codului de invitație:', err);
@@ -72,7 +74,7 @@ const InviteCode = () => {
             <RetroInput
               type="text"
               placeholder="Cod Invitație"
-              value={inviteCode}
+              value={inviteCodeValue}
               onChange={handleChange}
               maxLength={8}
               className="invite-code-input"

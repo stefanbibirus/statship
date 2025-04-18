@@ -125,7 +125,7 @@ const HelixAnimation = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [dimensions, userCurvePosition, partnerCurvePosition]);
+  }, [dimensions, userCurvePosition, partnerCurvePosition, drawHelix]);
 
   // Dacă nu există o relație, afișăm un mesaj
   if (!relationship || !relationship.id) {
