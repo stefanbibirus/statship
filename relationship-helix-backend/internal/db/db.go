@@ -3,6 +3,8 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	"path/filepath"
+	"runtime"
 	"time"
 
 	"github.com/golang-migrate/migrate/v4"
@@ -34,23 +36,29 @@ func InitDB(databaseURL string) (*sql.DB, error) {
 
 // RunMigrations execută migrările pentru baza de date
 func RunMigrations(db *sql.DB) error {
-	// Instead of using runtime.Caller, which relies on relative paths
-	// Use an embedded approach or a fixed path that works in deployment
+	// Obține calea către directorul de migrări
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		return fmt.Errorf("nu s-a putut obține directorul curent")
+	}
 
+	migrationsPath := filepath.Join(filepath.Dir(filename), "migrations")
+
+	// Creează driver-ul pentru postgres
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	if err != nil {
 		return fmt.Errorf("eroare la crearea driver-ului postgres: %v", err)
 	}
 
-	// Either use a fixed URL that points to migrations in your deployment
+	// Inițializează migrate
 	m, err := migrate.NewWithDatabaseInstance(
-		"file:///app/migrations", // Update this path to where migrations exist in Docker
+		fmt.Sprintf("file://%s", migrationsPath),
 		"postgres", driver)
-
 	if err != nil {
 		return fmt.Errorf("eroare la inițializarea migrate: %v", err)
 	}
 
+	// Execută migrările
 	if err := m.Up(); err != nil && err != migrate.ErrNoChange {
 		return fmt.Errorf("eroare la executarea migrărilor: %v", err)
 	}
