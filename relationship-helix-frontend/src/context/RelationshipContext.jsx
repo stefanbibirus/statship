@@ -69,8 +69,8 @@ export const RelationshipProvider = ({ children }) => {
     }
   };
   
-  // Utilizează un cod de invitație
-  const useInviteCode = async (inviteCode) => {
+  // Utilizează un cod de invitație - REDENUMIT pentru claritate
+  const joinWithInviteCode = async (inviteCode) => {
     try {
       const response = await api.post('/api/relationship/join', { inviteCode });
       
@@ -142,7 +142,7 @@ export const RelationshipProvider = ({ children }) => {
     partnerCurvePosition,
     fetchRelationship,
     generateInviteCode,
-    useInviteCode,
+    joinWithInviteCode, // REDENUMIT pentru claritate
     updateUserPosition,
     deleteRelationship
   };

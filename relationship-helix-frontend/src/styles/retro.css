@@ -1,9 +1,11 @@
+/* 
 @font-face {
   font-family: 'PixelFont';
-  src: url('/assets/fonts/pixel.ttf') format('truetype');
+  src: url('../assets/fonts/pixel.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+*/
 
 :root {
   /* Culori Neon */
@@ -28,7 +30,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'PixelFont', 'Courier New', monospace;
+  font-family: 'Courier New', monospace;
   color: white;
   background-color: var(--bg-dark);
   overflow-x: hidden;
@@ -46,7 +48,7 @@ body {
 }
 
 .retro-text {
-  font-family: 'PixelFont', 'Courier New', monospace;
+  font-family: 'Courier New', monospace;
   color: white;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
   letter-spacing: 1px;
@@ -144,7 +146,7 @@ body {
 
 /* Butoane */
 .retro-button {
-  font-family: 'PixelFont', 'Courier New', monospace;
+  font-family: 'Courier New', monospace;
   background-color: transparent;
   border: 2px solid var(--neon-blue);
   color: white;
@@ -245,7 +247,7 @@ body {
 }
 
 .retro-input {
-  font-family: 'PixelFont', 'Courier New', monospace;
+  font-family: 'Courier New', monospace;
   background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid var(--neon-blue);
   color: white;
